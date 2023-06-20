@@ -1,16 +1,32 @@
 import React from 'react'
-import logo from "./images/logo.svg"
+import Logo from "./images/Logo.svg"
 
-function Home() {
-    
+import { styled } from './stitches.config';
+
+const Box = styled('div',{
+  margin: "$2", 
+  display: "flex",
+  flexWrap: "wrap", 
+  gap: "$2"
+
+})
+const ButtonMe = styled('button', {
+    backgroundColor: '$orangeDark',
+    padding: '$1',
+    borderRadius: 5
+})
+
+const Home = () => {
   return (
-    <div
+    <Box
     style={{
-      backgroundColor: 'blue',
       width: '100px',
       height: '100px'
     }}
-  ><img src={logo} alt="logo"/></div>
+    >
+    <Logo/>
+  <ButtonMe>Click meee!</ButtonMe>
+  </Box>
   )
 }
 
