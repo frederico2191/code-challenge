@@ -8,49 +8,50 @@ const MAX_REPOS = 4
 
 const present = new Date();
 const monthAgo = present.setMonth(present.getMonth() - 1)
-const monthAgoFormated = moment(monthAgo).format('YYYY-MM-DD')
+const monthAgoFormatted = moment(monthAgo).format('YYYY-MM-DD')
 
-
-// const encodeURIComponent() = encodeURL
-// const response = await axios.get(encodedURL)
+const yearAgo = present.setFullYear(present.getFullYear() - 1)
+const yearAgoFormated = moment(yearAgo).format('YYYY-MM-DD')
 
 const getTopPopularUsers = async () => {
-    const response = await axios.get(`https://api.github.com/search/users?per_page=3&q=created:%3E${monthAgoFormated}%20followers%3A%3E%3D100&ref=searchresults&s=followers&type=Users`)
-    // const a = response.data.items
-    // console.log(a,"AAAArra")
-    // const fetchedTopPopularUsers = await fetchUsers(response.data.items)
-    // console.log("555",fetchedTopPopularUsers)
-    // return fetchedTopPopularUsers
-    const fetchedTopPopularUsers = await Promise.all(response.data.items.map(async el => {
-        const user = await axios.get(el.url)
-        console.log('user', user.data)
-        return user.data
-    }))
+    const query = encodeURIComponent(`created:>=${monthAgoFormatted}`)
+    const url = `${BASE_URL}/search/users?q=${query}&sort=followers&per_page=${MAX_PROFILES}`
+
+    const response = await axios.get(url)
+    
+    const fetchedTopPopularUsers = await Promise.all(response.data?.items?.map(async el => getUser(el?.url)))
     return fetchedTopPopularUsers
 }
 
-
-
-
 const getTopActiveUsers = async () => {
-    const url = `${BASE_URL}/search/users?o=desc&per_page=${MAX_PROFILES}&q=created:>${monthAgoFormated} repos:>=10`
-    const encodedUrl = encodeURIComponent(url)
-    const response = await axios.get(encodedUrl)
-    // const response = await axios.get(`https://api.github.com/search/users?o=desc&per_page=3&q=created:%3E${monthAgoFormated}%20repos%3A%3E%3D10&ref=searchresults&s=public_repos&type=Users`)
+    const query = encodeURIComponent(`created:>=${monthAgoFormatted}`)
+    const url = `${BASE_URL}/search/users?q=${query}&sort=repositories&per_page=${MAX_PROFILES}`
     
-    const fetchedTopActiveUsers = await Promise.all(response.data.items.map(async el => {
-            const user = await axios.get(el.url)
-            console.log('user', user.data)
-            return user.data
-        }))
-    console.log("fetchedTopActiveUsers new",fetchedTopActiveUsers)
+    const response = await axios.get(url)
+    
+    const fetchedTopActiveUsers = await Promise.all(response.data?.items?.map(async el => getUser(el?.url)))
     return fetchedTopActiveUsers
-
-    // return await axios.get(`https://api.github.com/search/users?per_page=30&q=created:%3E${monthAgoFormated}%20repos%3A%3E%3D10`)
-    // return await axios.get(`https://api.github.com/search/users?per_page=30&q=created:%3E${monthAgoFormated}%20repos%3A%3E%3D10&ref=searchresults&s=public_repos&type=Users`)
 }
 
+const getUser = async (url) => {
+    const response = await axios.get(url)
+    return response.data
+}
 
+const getUserTopRatedRepo = async ({ username }) => {
+    const query = encodeURIComponent(`user:${username}`)
+    const url = `${BASE_URL}/search/users?q=${query}&sort=stars&per_page=1`
+    
+    const response = await axios.get(url)
+    return response.data
+}
 
+const getMostStarredRepositories = async () => {
+    const query = encodeURIComponent(`created:${yearAgoFormated}`)
+    const url = `${BASE_URL}/search/repositories?q=${query}&sort=stars&per_page=${MAX_REPOS}`
+    
+    const response = await axios.get(url)
+    return response.data
+}
 
-export {getTopPopularUsers,getTopActiveUsers}
+export { getTopPopularUsers,getTopActiveUsers, getUserTopRatedRepo, getUser, getMostStarredRepositories }
