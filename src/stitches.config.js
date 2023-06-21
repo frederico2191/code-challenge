@@ -1,10 +1,15 @@
 import { createStitches } from "@stitches/react";
 
 
-export const { styled, theme } = createStitches({
+export const { styled, theme, utils } = createStitches({
   theme: {
     colors: {
-      blueNavbar: "rgba(46,58,83,255)",
+      whiteBackground:"rgba(250,250,250,255)",
+      blueNavyNavbar: "rgba(46,58,83,255)",
+      whiteCard: "rgba(255,255,255,255)",
+      shadowCard: "rgba(236,236,236,255)",
+      blueNavyBody: "rgba(28,66,162,255)",
+
       gray400: "gainsboro",
       gray500: "lightgray",
       purple400: "blueviolet",
@@ -24,10 +29,10 @@ export const { styled, theme } = createStitches({
     fontSizes: {}
   },
   utils: {
-    // px: (config) => (value) => ({
-    //   paddingLeft: value,
-    //   paddingRight: value
-    // }),
+    px: (config) => (value) => ({
+      paddingLeft: value,
+      paddingRight: value
+    }),
     // "%": (config) => (value) => ({
     //   paddingLef: value,
     //   paddingRight: value

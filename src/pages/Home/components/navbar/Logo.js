@@ -9,18 +9,20 @@ const LogoWrapper = styled("div",{
     color:"White",
     display: "flex",
     flexDirection: "row",
-    flexWrap: "nowrap",
     alignContent: "center",
     alignItems: "center",
     fontWeight:"bolder",
     fontSize:"600",
-    justifyContent: "space-evenly",
-    paddingLeft:"2rem"
   })
+const LogoIconWrapper = styled('div',{
+  marginRight: "10px"
+})
 
 const Logotype = () => {
   return <LogoWrapper>
-    <LogoIcon/>
+    <LogoIconWrapper>
+      <LogoIcon/>
+    </LogoIconWrapper>
     <span>UPHILL</span>
   </LogoWrapper>
 }

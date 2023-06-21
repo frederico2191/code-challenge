@@ -6,13 +6,11 @@ import './App.css';
 import { BrowserRouter } from "react-router-dom";
 import { RouterConfig } from "./navigation/routerConfig"
 
-
 const App = () => {
-  return <div>
-    <BrowserRouter>
+  return <BrowserRouter>
       <RouterConfig />
     </BrowserRouter>
-  </div> 
+
 }
 
 export default App;
