@@ -28,7 +28,7 @@ const SearchIcon = styled(BsSearch, {
 const Search = () => {
   return (
     <SearchWrapper>
-      <Input placeholder='Search'/>
+      <Input placeholder='Search' />
       <SearchIcon/>
     </SearchWrapper>
   )

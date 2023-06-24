@@ -6,11 +6,11 @@ const BASE_URL = 'https://api.github.com'
 const MAX_PROFILES = 3
 const MAX_REPOS = 4
 
-const present = new Date();
-const monthAgo = present.setMonth(present.getMonth() - 1)
+const monthAgo = new Date().setMonth(new Date().getMonth() - 1)
 const monthAgoFormatted = moment(monthAgo).format('YYYY-MM-DD')
-const yearAgo = present.setFullYear(present.getFullYear() - 1)
+const yearAgo = new Date().setFullYear(new Date().getFullYear() - 1)
 const yearAgoFormated = moment(yearAgo).format('YYYY-MM-DD')
+console.log("yearagoFormated", yearAgoFormated)
 
 
 const getTopPopularUsers = async ({searched}) => {
@@ -50,7 +50,7 @@ const getUser = async (url) => {
 
 const getUserTopRatedRepo = async ({ username }) => {
     const query = encodeURIComponent(`user:${username}`)
-    const url = `${BASE_URL}/search/users?q=${query}&sort=stars&per_page=1`
+    const url = `${BASE_URL}/search/repositories?q=${query}&sort=stars&per_page=1`
     
     const response = await axios.get(url,{
         headers: {
@@ -61,6 +61,7 @@ const getUserTopRatedRepo = async ({ username }) => {
 }
 
 const getTopRepositories = async ({searched}) => {
+    console.log('searched', searched)
     const query = encodeURIComponent(searched ? `created:>=${yearAgoFormated} in:name ${searched}`: `created:>=${yearAgoFormated}`)
     const url = `${BASE_URL}/search/repositories?q=${query}&sort=stars&per_page=${MAX_REPOS}`
     

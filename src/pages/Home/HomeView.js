@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Logo from "../../images/Logo"
-import Navbar from './components/navbar/Navbar';
-import CardContainer from './components/userSection/card/CardContainer';
-import UserSection from '../Home/components/userSection'
-import RepoSection from '../Home/components/repoSection'
+import Logo from "../../assets/images/Logo"
+import Navbar from './components/Navbar/Navbar';
+import CardContainer from './components/UserSection/Card/CardContainer';
+import UserSection from './components/UserSection'
+import RepoSection from './components/RepoSection'
 
 import {getTopRepositories, getTopPopularUsers} from '../../api';
 import {getTopActiveUsers} from '../../api';
@@ -26,20 +26,7 @@ const Box = styled('div',{
 
 const firstSectionTitle = "Trending Users"
 const secondSectionTitle = "Most Active Users"
-const thirdSectionTitle = "Trending Users"
-
-// const Box = styled('div',{
-//     margin: "$2", 
-//     display: "flex",
-//     flexWrap: "wrap", 
-//     gap: "$2"
-  
-//   })
-  // const Button = styled('button', {
-  //     backgroundColor: '$orangeDark',
-  //     padding: '$1',
-  //     borderRadius: 5
-  // })
+const thirdSectionTitle = "Top Repositories"
   
   const HomeView = () => {
     const [topPopularUsers, setTopPopularUsers] = useState([])
@@ -50,52 +37,27 @@ const thirdSectionTitle = "Trending Users"
     useEffect(() => {
       (async () => {
         const fetchedTopPopularUsers = await getTopPopularUsers({searched});
-        const fetchedTopActiveUsers = await getTopActiveUsers({searched});
-        const fetchedTopRepositories = await getTopRepositories({searched});
+        // const fetchedTopActiveUsers = await getTopActiveUsers({searched});
+        // const fetchedTopRepositories = await getTopRepositories({searched});
         setTopPopularUsers(fetchedTopPopularUsers)
-        setTopActiveUsers(fetchedTopActiveUsers)
-        setTopRepositories(fetchedTopRepositories.items)
+        // setTopActiveUsers(fetchedTopActiveUsers)
+        // setTopRepositories(fetchedTopRepositories.items)
+
 
       })()
-    }, [searched])
+    }, [])
 
-    useEffect(()=>{
-      const lol = () => {setSearched("lol")}
-      lol()
-    },[])
     
     return (
       <>
       <Navbar/>
       <FlexBox>
         <Box>
-            {/* <UserSection title="Trending Users" /> */}
-            <UserSection title={firstSectionTitle} topPopularUsers={topPopularUsers}/>
-            <UserSection title={secondSectionTitle} />
-            <RepoSection title={thirdSectionTitle} />
-            {/* {topPopularUsers.map((popularUser) => (
-              console.log("popularuser111", popularUser),
-              <CardContainer key={popularUser.id} popularUser={popularUser}/>))}
-            {topActiveUsers.map(({login, avatar_url, id, followers, project}) => (
-              <CardContainer key={id} name={login} image={avatar_url} id={id} followers={followers} project={project}/>
-            ))}
-            {topRepositories.map(({name, description, id, stargazers_count}) => (
-              <CardContainer key={id} name={name} description={description} stars={stargazers_count}/>
-            ))} */}
+            <UserSection title={firstSectionTitle} users={topPopularUsers}/>
+            {/* <UserSection title={secondSectionTitle} users={topActiveUsers}/> 
+            <RepoSection title={thirdSectionTitle} repos={topRepositories} /> */}
         </Box>
       </FlexBox>
-
-      {/* <Box
-      style={{
-        backgroundColor: 'blue',
-        width: '100px',
-        height: '100px'
-      }}
-      > */}
-    {/* <img src={logo} alt="logo"/> */}
-    {/* <Logo/>
-    <Button>Click meee!</Button>
-    </Box> */}
     </>
     )
   }

@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CardView from './CardView'
+import HoveredCard from './HoveredCard'
 
-const CardContainer = ({popularUser}) => {
+const CardContainer = ({user}) => {
+  const [hovered, setHovered] = useState(false)
+  // const hovered = true
   return (
     // <CardView name={name} id={id} follower/>
-    <CardView popularUser={popularUser}/>
+
+    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+
+      {hovered? <HoveredCard user={user}/> : <CardView user={user}/>}
+    </div>
+    
   )
 }
 

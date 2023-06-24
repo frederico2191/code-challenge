@@ -1,14 +1,23 @@
-import { createStitches } from "@stitches/react";
+import { createStitches, globalCss } from "@stitches/react";
 
 
 export const { styled, theme, utils } = createStitches({
   theme: {
     colors: {
-      whiteBackground:"rgba(250,250,250,255)",
-      blueNavyNavbar: "rgba(46,58,83,255)",
-      whiteCard: "rgba(255,255,255,255)",
-      shadowCard: "rgba(236,236,236,255)",
-      blueNavyBody: "rgba(28,66,162,255)",
+      whiteBackground:"rgb(250,250,250)",
+      blueNavyNavbar: "rgb(46,58,83)",
+      whiteCard: "rgb(255,255,255)",
+      shadowCard: "rgb(236,236,236)",
+      blueNavyBody: "rgb(28,66,162)",
+      blueTextBody: "rgb(4,12,36)",
+      greyLineBody: "rgb(231,231,231)",
+      greyTextBody: "rgb(171,171,171)",
+      blueSkyBody: "rgb(47,128,237)",
+      blueLightBody:"rgb(44,156,218)",
+      blueLightestBody:"rgb(87,204,242)",
+      
+
+
 
       gray400: "gainsboro",
       gray500: "lightgray",
@@ -21,8 +30,9 @@ export const { styled, theme, utils } = createStitches({
       primaryDark: "$purple500"
     },
     space: {
-      1: "10px",
-      2: "20px",
+      1: "5px",
+      2: "10px",
+      3: "20px",
       8: "80px",
       18: "180px"
     },
@@ -33,6 +43,10 @@ export const { styled, theme, utils } = createStitches({
       paddingLeft: value,
       paddingRight: value
     }),
+    mx: (config) => (value) => ({
+      marginLeft: value,
+      marginRight: value
+    }),
     // "%": (config) => (value) => ({
     //   paddingLef: value,
     //   paddingRight: value
@@ -40,8 +54,44 @@ export const { styled, theme, utils } = createStitches({
   },
   conditions: {
     bp1: "@media (min-width: 400px)"
-  }
+  },
+  // variants: {
+  //   color: {
+  //     blueNavyNavbar: {
+  //       25: "rgba(46,58,83)",
+  //     }
+  //   }
+  // }
 });
+
+export const globalStyles = globalCss({
+  '@font-face': [
+    {
+      fontFamily: 'Inter-ExtraBold',
+      src: 'local("Inter-ExtraBold"), url("Inter-ExtraBold.tff)',
+    },
+    {
+      fontFamily: 'Inter-ExtraLight',
+      src: 'local("Inter-ExtraLight"), url("Inter-ExtraLight.tff)")',
+    },
+  ],
+});
+
+
+
+// export const globalStyles = globalCss({
+//   '@import': [
+//     "url('https://fonts.googleapis.com/css2?family=Play&display=swap')",
+//   ],
+//   '@font-face': [
+//     {
+//       fontFamily: 'Inter', 'sans-serif',
+//       src: "url('https://fonts.googleapis.com/css2?family=Play&display=swap')",
+//     },
+//   ],
+// })
+
+
 // export const { styled, getCssText, css } = createStitches({
 //   theme: {
 //     fonts: {

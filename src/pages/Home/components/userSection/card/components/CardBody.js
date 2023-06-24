@@ -1,13 +1,56 @@
 import React from 'react'
 import { styled } from '../../../../../../stitches.config'
+import { FaRegUser } from 'react-icons/fa';
+import FollowersInfo from './FollowersInfo';
 
 const Box = styled('div',{
-    backgroundColor:'$red500'
+    variants:{
+        color:{
+            white: {
+                backgroundColor: '$whiteCard',
+                color:'$blueTextBody',
+            },
+            transparent: {
+                backgroundColor: 'transparent',
+                color:'$greyLineBody',
+                marginTop:'$2'
+            }
+        }
+    },
+    height:'106px',
+    display:'flex',
+    flexDirection:'column',
+    justifyContent: 'start',
+    alignItems:'center',
+    zIndex: 11
 })
 
-const CardBody = () => {
+const UserName = styled('div',{
+    // color:'$blueTextBody',
+    fontWeight:'bold',
+    marginTop:'19px',
+    color:'inherit'
+})
+
+const Id = styled('div',{
+    // color:'$blueTextBody',
+    fontSize:'12px',
+    marginTop:'11px',
+    marginBottom:'12px',
+    color:'inherit'
+})
+
+
+
+
+const CardBody = ({user,color}) => {
+    const {login,id,followers,project,avatar_url,description,stars} = user;
   return (
-    <Box>CardBody</Box>
+    <Box color={color}>
+        <UserName>{login}</UserName>
+        <Id>{id}</Id>
+        <FollowersInfo color={color} followers={followers}/>
+    </Box>
   )
 }
 

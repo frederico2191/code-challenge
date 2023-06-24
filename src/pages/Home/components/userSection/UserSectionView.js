@@ -1,8 +1,9 @@
 import React from 'react'
-import Card from './card'
+import Card from './Card'
 import { styled } from '../../../../stitches.config'
 
-const UserSectionView = ({title, topPopularUsers}) => {
+const UserSectionView = ({title, users}) => {
+  console.log("USERS SECTION VIEW",users)
   const BoxWrapper = styled('div',{
     marginTop:'30px',
   })
@@ -14,13 +15,17 @@ const UserSectionView = ({title, topPopularUsers}) => {
     flexDirection:'row',
     justifyContent:'space-between'
   })
+
+  const Title = styled('h3',{
+    color:'$blueTextBody'
+  })
   
 
   return (<BoxWrapper>
-    <div>{title}</div>
+    <Title>{title}</Title>
     <Box>
-    {topPopularUsers?.map((popularUser) => (
-        <Card key={popularUser.id} popularUser={popularUser}/>
+    {users?.map((user) => (
+        <Card key={user.id} user={user}/>
     ))}
     </Box>
     </BoxWrapper>
