@@ -61,7 +61,6 @@ const getUserTopRatedRepo = async ({ username }) => {
 }
 
 const getTopRepositories = async ({searched}) => {
-    console.log('searched', searched)
     const query = encodeURIComponent(searched ? `created:>=${yearAgoFormated} in:name ${searched}`: `created:>=${yearAgoFormated}`)
     const url = `${BASE_URL}/search/repositories?q=${query}&sort=stars&per_page=${MAX_REPOS}`
     
