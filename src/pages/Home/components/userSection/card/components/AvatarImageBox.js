@@ -8,7 +8,6 @@ const AvatarImageBox = ({image}) => {
         width:'72px',
         position: 'absolute',
         zIndex: 20,
-        // bottom:'-26px'
         top:'26px'
       })
   return (

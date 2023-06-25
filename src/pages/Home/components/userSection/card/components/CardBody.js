@@ -44,11 +44,11 @@ const Id = styled('div',{
 
 
 const CardBody = ({user,color}) => {
-    const {login,id,followers,project,avatar_url,description,stars} = user;
+    const {login,id,followers} = user;
   return (
     <Box color={color}>
-        <UserName>{login}</UserName>
-        <Id>{id}</Id>
+        <UserName data-testid="username">{login}</UserName>
+        <Id data-testid="id">{id}</Id>
         <FollowersInfo color={color} followers={followers}/>
     </Box>
   )

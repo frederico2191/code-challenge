@@ -66,39 +66,18 @@ const LowerBox = styled('div',{
 
 
 
-const MiniRepoCardView = ({user}) => {
-    const {login} = user;
-    const [repoName, setRepoName] = useState('')
-    const [repoDescription, setRepoDescription] = useState('')
-    const [starsCount, setStarsCount] = useState('')
+const MiniRepoCardView = ({repo}) => {
     const noDescription = 'No description added'
     const noRepoName = 'No name added'
-  
-    useEffect(() => {
-      (async () => {
-        console.log("TTTTTT%%%%%%%%%%%%%%%%%%%%%%%%%%%",login)
-        const topRatedRepo  = await getUserTopRatedRepo({ username:login });
-        setRepoName(topRatedRepo.items[0]?.name)
-        setRepoDescription(topRatedRepo.items[0]?.description)
-        setStarsCount(topRatedRepo.items[0]?.stargazers_count)
-      })()
-    }, [login])
-
+    const {name,description, stargazers_count} = repo
+ 
   return (
     <BoxWrapper>
         <UpperBox>
-            <RepoName>{repoName || noRepoName}</RepoName>
-            <RepoStars starsCount={starsCount}/>
-            {/* <RepoTotalStars> 
-                <StarIcon>
-                    <MdStars/>
-                </StarIcon>
-                <StarsCount>
-                    {StarsCount}
-                </StarsCount>
-            </RepoTotalStars> */}
+            <RepoName data-testid="repo-name">{name || noRepoName}</RepoName>
+            <RepoStars data-testid="repo-stars" starsCount={stargazers_count || 0}/>
         </UpperBox>
-        <LowerBox>{repoDescription || noDescription}</LowerBox>
+        <LowerBox data-testid="repo-description" > {description || noDescription}</LowerBox>
     </BoxWrapper>
   )
 }

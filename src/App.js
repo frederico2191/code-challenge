@@ -2,9 +2,8 @@
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
 import { RouterConfig } from "./navigation/routerConfig"
-// import { globalStyles } from '../stitches.config'
-// import { useEffect } from 'react';
-
+import { useEffect } from 'react';
+import { globalStyles } from './stitches.config';
 
 const App = () => {
 

@@ -46,11 +46,7 @@ export const { styled, theme, utils } = createStitches({
     mx: (config) => (value) => ({
       marginLeft: value,
       marginRight: value
-    }),
-    // "%": (config) => (value) => ({
-    //   paddingLef: value,
-    //   paddingRight: value
-    // })
+    })
   },
   conditions: {
     bp1: "@media (min-width: 400px)"

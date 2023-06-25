@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from '../../../../../stitches.config'
 import CardHeader from './components/CardHeader'
 import CardBody from './components/CardBody'
 import CardFooter from './components/CardFooter'
+import { getUserTopRatedRepo } from '../../../../../api'
 
 const Box = styled('div',{
     $$shadow: '$colors$greyLineBody',
@@ -15,13 +16,12 @@ const Box = styled('div',{
     
   })
 
-const CardView = ({user}) => {
-  const {login,id,followers,project,avatar_url,description,stars} = user;
-
+const CardView = ({user, repo}) => {
+  const {avatar_url} = user;
   return <Box>
             <CardHeader image={avatar_url} />
             <CardBody color="white" user={user}/>
-            <CardFooter user={user}/>
+            <CardFooter repo={repo}/>
     </Box>
 }
 

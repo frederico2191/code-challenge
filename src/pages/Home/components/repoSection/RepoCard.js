@@ -15,12 +15,17 @@ const RepoName = styled('div',{
 const RepoDescription = styled('div',{
     marginTop:'$3',
     color: '$blueTextBody',
-    // height: 'auto',
+    height: '60px',
     maxWidth: '145px',
     fontSize:'13px',
+    // display:'inline-block',
+    // display: "-webkit-box",
+    // -webkit-line-clamp: 4;
+    // -webkit-box-orient: vertical;
     // whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
+
 })
 
 

@@ -3,7 +3,7 @@ import { styled } from '../../../../stitches.config'
 import Logo from './Logo'
 import Search from './Search'
 
-const Navbar = () => {
+const Navbar = ({searched}) => {
 
   const Bar = styled("div",{
     backgroundColor: '$blueNavyNavbar',
@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <Bar>
       <Logo/>
-      <Search/>
+      <Search searched={searched}/>
     </Bar>
   )
 }

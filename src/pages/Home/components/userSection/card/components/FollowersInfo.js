@@ -32,7 +32,7 @@ const FollowersInfo = ({followers,color}) => {
   return (
     <Box>
             <FaRegUser/>
-            <FollowersTotal>{followers}<FollowersText>Followers</FollowersText></FollowersTotal>
+            <FollowersTotal data-testid="followers-number">{followers}<FollowersText>Followers</FollowersText></FollowersTotal>
     </Box>
   )
 }

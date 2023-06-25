@@ -18,12 +18,6 @@ const ImagesBox = styled('div',{
   display: 'flex',
   justifyContent:'center',
   position: 'relative'
-  // alignItems:'end'
-  // borderRadius: '6px 6px',
-  // webkitBorderRadius: '6px 6px',
-  // mozBorderRadius: '6px 6px'
-  // backgroundColor: '$purple400',
-
 })
 
 const CoverImageBox = styled('div', {
@@ -54,8 +48,6 @@ const CoverImage = styled("img", {
   width: '320px',
   position: 'absolute',
   borderRadius: '6px 6px 0 0'
-  // borderRadius: '10px',
-   
 })
 
 const AvatarImageBox = styled('img',{
@@ -64,7 +56,6 @@ const AvatarImageBox = styled('img',{
   width:'72px',
   position: 'absolute',
   zIndex: 20,
-  // bottom:'-26px'
   top:'26px'
 })
 
@@ -72,7 +63,7 @@ const CardHeader = ({image}) => {
   return (
     <Box>
       <ImagesBox>
-        <AvatarImageBox src={image} alt="AvatarImage"/>
+        <AvatarImageBox src={image} alt="avatar-image"/>
         <CoverImageBoxWrapper>
           <CoverImageBox>
             <CoverImageOverlay />
