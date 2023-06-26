@@ -19,7 +19,7 @@ const Title = styled('h3',{
   marginBottom: '2rem'
 })
 
-const RepoSectionView = ({title, repos}) => (
+const RepoSectionView = ({ title, repos }) => (
   <BoxWrapper>
     <Title>{title}</Title>
     <Box>
@@ -27,6 +27,5 @@ const RepoSectionView = ({title, repos}) => (
     </Box>
   </BoxWrapper>
 )
-
 
 export default RepoSectionView

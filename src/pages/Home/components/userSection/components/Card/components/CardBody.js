@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from '../../../../../../stitches.config'
+import { styled } from '../../../../../../../stitches.config'
 import FollowersInfo from './FollowersInfo';
 
 const Box = styled('div',{
@@ -39,11 +39,8 @@ const Id = styled('div',{
     color:'inherit'
 })
 
-
-
-
 const CardBody = ({user,color}) => {
-    const {login,name,followers} = user;
+  const {login,name,followers} = user;
   return (
     <Box color={color}>
         <UserName data-testid="username">{login}</UserName>

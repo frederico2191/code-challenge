@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import MiniRepoCard from '.'
-import MiniRepoProfile from '../../../../../../../mocks/MiniRepoProfile.json'
+import MiniRepoProfile from '../../../../../../../../mocks/MiniRepoProfile.json'
 
 test("should display repo name, description and amount of stars", () => {
     render(<MiniRepoCard repo={MiniRepoProfile}/>)

@@ -1,7 +1,5 @@
 import React from 'react'
-import { styled } from '../../../../../../stitches.config'
-// import AvatarImageBox from './AvatarImageBox'
-
+import { styled } from '../../../../../../../stitches.config'
 
 const Box = styled('div',{
   height:'98px',
@@ -59,20 +57,18 @@ const AvatarImageBox = styled('img',{
   top:'26px'
 })
 
-const CardHeader = ({image}) => {
-  return (
-    <Box>
-      <ImagesBox>
-        <AvatarImageBox src={image} alt="avatar-image"/>
-        <CoverImageBoxWrapper>
-          <CoverImageBox>
-            <CoverImageOverlay />
-            <CoverImage src={image} alt="CoverImage"/>
-          </CoverImageBox>
-        </CoverImageBoxWrapper>
-      </ImagesBox>
-    </Box>
-  )
-}
+const CardHeader = ({image}) => (
+  <Box>
+    <ImagesBox>
+      <AvatarImageBox src={image} alt="avatar-image"/>
+      <CoverImageBoxWrapper>
+        <CoverImageBox>
+          <CoverImageOverlay />
+          <CoverImage src={image} alt="CoverImage"/>
+        </CoverImageBox>
+      </CoverImageBoxWrapper>
+    </ImagesBox>
+  </Box>
+)
 
 export default CardHeader

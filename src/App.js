@@ -1,17 +1,13 @@
-
 import './App.css';
 import { BrowserRouter } from "react-router-dom";
 import { RouterConfig } from "./navigation/routerConfig"
-import { useEffect } from 'react';
-import { globalStyles } from './stitches.config';
 
-const App = () => {
+const App = () => (
+  <BrowserRouter>
+    <RouterConfig />
+  </BrowserRouter>
+)
 
-  return <BrowserRouter>
-      <RouterConfig />
-    </BrowserRouter>
-
-}
 export default App;
 
 // const App = () => {

@@ -5,8 +5,9 @@ import { useSearchParams } from 'react-router-dom';
 import _ from 'lodash'
 
 const SearchWrapper = styled("div",{
-  width:'500px',
+  maxWidth:'500px',
   display: "flex",
+  flexGrow: 1,
   alignContent: "center",
   alignItems: "center",
   position: 'relative'
@@ -14,7 +15,7 @@ const SearchWrapper = styled("div",{
 
 const Input = styled("input",{
   borderRadius:"9999px",
-  width:"490px",
+  width:"100%",
   borderWidth: "0",
   outline: 'none',
   paddingLeft: 35,
@@ -52,12 +53,18 @@ const Search = () => {
     setSearchParams(searchParams)
     setCursor(event.target.value?.length)
   }, 500)
+  
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      ref.current.blur()
+    }
+  };
 
   const resetFocus = (event) => event.target.selectionEnd = cursor
 
   return (
     <SearchWrapper>
-      <Input ref={ref} autoFocus="autoFocus" onFocus={resetFocus} type="text" defaultValue={searchText} placeholder='Search' onChange={handleSearch}/>
+      <Input ref={ref} onKeyDown={handleKeyDown} autoFocus="autoFocus" onFocus={resetFocus} type="text" defaultValue={searchText} placeholder='Search' onChange={handleSearch}/>
       <SearchIcon/>
     </SearchWrapper>
   )

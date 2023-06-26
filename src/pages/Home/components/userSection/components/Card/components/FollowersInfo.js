@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaRegUser } from 'react-icons/fa';
-import { styled } from '../../../../../../stitches.config';
+import { styled } from '../../../../../../../stitches.config';
 
 const Box = styled('div',{
     display: 'flex',
@@ -26,14 +26,10 @@ const FollowersText = styled('div',{
     fontWeight:'lighter'
 })
 
-
-const FollowersInfo = ({followers,color}) => {
-  
-  return (
-    <Box>
-            <FaRegUser/>
-            <FollowersTotal data-testid="followers-number">{followers}<FollowersText>Followers</FollowersText></FollowersTotal>
-    </Box>
-  )
-}
+const FollowersInfo = ({followers,color}) => (
+  <Box>
+    <FaRegUser/>
+    <FollowersTotal data-testid="followers-number">{followers}<FollowersText>Followers</FollowersText></FollowersTotal>
+  </Box>
+)
 export default FollowersInfo

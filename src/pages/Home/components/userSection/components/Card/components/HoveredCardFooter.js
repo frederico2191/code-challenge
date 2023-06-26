@@ -1,11 +1,12 @@
 import React from 'react'
-import { styled } from '../../../../../../stitches.config'
+import { styled } from '../../../../../../../stitches.config'
 
 const Box = styled('div',{
     display: 'flex',
     alignItems:'center',
     justifyContent: 'center',
     zIndex:11,
+    position: 'relative',
     marginTop:'$3',
     // textDecoration:'none',
     // a:-webkit-any-link {
@@ -13,19 +14,6 @@ const Box = styled('div',{
     //   cursor: pointer;
     //   text-decoration: underline;
     // borderRadius:'0 0 6px 6px',
-})
-const ProfileButton = styled('button',{
-    width: '115px',
-    height:'46px',
-    border:'solid',
-    color:'$greyLineBody',
-    borderRadius:'40px',
-    borderWidth:'1px',
-    display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
-    fontSize: 12,
-    backgroundColor:'transparent',
 })
 
 const OpenProfileLink = styled('a',{

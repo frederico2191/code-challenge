@@ -8,28 +8,29 @@ const HomeContainer = () => {
   const [topActiveUsers, setTopActiveUsers] = useState([])
   const [topRepositories, setTopRepositories] = useState([])
   const [searchParams] = useSearchParams();
-  const [searched,setSearched] = useState('')
+  const [searched, setSearched] = useState('')
   const [error, setError] = useState(false)
 
   const fromURL = searchParams.get('query')
-  
-  useEffect(()=>{
-    setSearched(fromURL)
-  },[fromURL,searched])
-  
-    useEffect(() => {
-      (async () => {
-        const fetchedTopActiveUsers = await getTopActiveUsers({searched});
-        const fetchedTopPopularUsers = await getTopPopularUsers({searched});
-        const fetchedTopRepositories = await getTopRepositories({searched});
 
-        if (fetchedTopActiveUsers.error || fetchedTopPopularUsers.error || fetchedTopRepositories.error) setError(true)
-        
-        setTopPopularUsers(fetchedTopPopularUsers)
-        setTopActiveUsers(fetchedTopActiveUsers)
-        setTopRepositories(fetchedTopRepositories.items)
-      })()
-    }, [searched])
+  useEffect(() => {
+    setSearched(fromURL)
+  }, [fromURL,searched])
+  
+  useEffect(() => {
+    (async () => {
+      const fetchedTopActiveUsers = await getTopActiveUsers({searched});
+      const fetchedTopPopularUsers = await getTopPopularUsers({searched});
+      const fetchedTopRepositories = await getTopRepositories({searched});
+
+      if (fetchedTopActiveUsers.error || fetchedTopPopularUsers.error || fetchedTopRepositories.error) setError(true)
+      
+      setTopPopularUsers(fetchedTopPopularUsers)
+      setTopActiveUsers(fetchedTopActiveUsers)
+      setTopRepositories(fetchedTopRepositories.items)
+
+    })()
+  }, [searched])
 
   return <HomeView topRepositories={topRepositories} topActiveUsers={topActiveUsers} topPopularUsers={topPopularUsers} error={error}/>
 }

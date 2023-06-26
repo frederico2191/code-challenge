@@ -2,7 +2,7 @@ import React from 'react'
 import CardBody from '../components/CardBody'
 import HoveredCardHeader from '../components/HoveredCardHeader'
 import HoveredCardFooter from '../components/HoveredCardFooter'
-import { styled } from '../../../../../../stitches.config'
+import { styled } from '../../../../../../../stitches.config'
 
 const Box = styled('div',{
   width:"320px",
@@ -46,7 +46,6 @@ const CoverImage = styled("img", {
 
 const HoveredCard = ({user}) => {
   const { avatar_url } = user
-
   return (
     <Box>
       <CoverImageBoxWrapper>

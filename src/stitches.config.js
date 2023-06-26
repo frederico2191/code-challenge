@@ -15,9 +15,6 @@ export const { styled, theme, utils } = createStitches({
       blueSkyBody: "rgb(47,128,237)",
       blueLightBody:"rgb(44,156,218)",
       blueLightestBody:"rgb(87,204,242)",
-      
-
-
 
       gray400: "gainsboro",
       gray500: "lightgray",

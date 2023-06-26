@@ -1,6 +1,6 @@
 import React from 'react'
-import { styled } from '../../../../../../stitches.config';
-import RepoStars from '../../../../../../components/RepoStars';
+import { styled } from '../../../../../stitches.config';
+import RepoStars from '../../../../../components/RepoStars';
 
 const RepoName = styled('div',{
     color:'$blueTextBody',

@@ -3,32 +3,30 @@ import { styled } from '../../../../stitches.config'
 import Logo from './Logo'
 import Search from './Search'
 
-const Navbar = ({searched}) => {
+const Bar = styled("div",{
+  backgroundColor: '$blueNavyNavbar',
+  display: "flex",
+  justifyContent:"space-around",
+  // width:'calc(100%)',
+  // px: '30px',
+  height:"64px",
+  paddingLeft:"$2",
+  paddingRight: "$2"
+})
 
-  const Bar = styled("div",{
-    backgroundColor: '$blueNavyNavbar',
-    display: "flex",
-    justifyContent:"space-around",
-    // width:'calc(100%)',
-    // px: '30px',
-    height:"64px",
-    paddingLeft:"$2",
-    paddingRight: "$2"
-  })
+const NavContainer = styled("div", {
+  width:"1050px",
+  display: "flex",
+  justifyContent:"space-between",
+})
 
-  // const Box = styled('div',{
-  //   maxWidth:"1600px",
-  //   paddingLeft:"$2",
-  //   paddingRight: "$2",
-  //   minWidth:'800px'
-  // })
-
-  return (
-    <Bar>
+const Navbar = ({ searched }) => (
+  <Bar>
+    <NavContainer>
       <Logo/>
       <Search searched={searched}/>
-    </Bar>
-  )
-}
+    </NavContainer>
+  </Bar>
+)
 
 export default Navbar

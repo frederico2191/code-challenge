@@ -1,26 +1,32 @@
 import React from 'react'
-import Card from './Card'
+import Card from './components/Card'
 import { styled } from '../../../../stitches.config'
 
 const BoxWrapper = styled('div',{
+  minHeight: '380px',
+  maxWidth: '100vw',
+  margin: 'auto',
   marginTop:'3.5rem',
-  minHeight: '380px'
 })
 
 const Box = styled('div',{
   marginTop: '10px',
-  width:'calc(100%)',
+  // width:'calc(100%)',
+  maxWidth: '100vw',
+  gap: '10px',
   display: 'flex',
   flexDirection:'row',
-  justifyContent:'space-between'
+  justifyContent:'space-between',
+  margin: '0 auto',
+  overflowX: 'scroll',
 })
 
 const Title = styled('h3',{
   color:'$blueTextBody',
-  marginBottom: '2rem'
+  marginBottom: '2rem',
 })
 
-const UserSection = ({title, users, error}) => (
+const UserSection = ({ title, users, error }) => (
   <BoxWrapper>
     <Title data-testid="section-title">{title}</Title>
     <Box>

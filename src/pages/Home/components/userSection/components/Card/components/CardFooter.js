@@ -1,7 +1,6 @@
 import React from 'react'
-import { styled } from '../../../../../../stitches.config'
+import { styled } from '../../../../../../../stitches.config'
 import MiniRepoCard from './MiniRepoCard'
-
 
 const BoxWrapper = styled('div',{
   display: 'flex',
@@ -9,7 +8,6 @@ const BoxWrapper = styled('div',{
   backgroundColor: '$whiteCard',
   height:'115px',
 })
-
 
 const Box = styled('div',{
   borderStyle: 'solid',

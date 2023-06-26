@@ -1,6 +1,6 @@
 import { render, fireEvent, screen, cleanup } from "@testing-library/react";
 import Card from '.'
-import userProfile from '../../../../../mocks/UserProfile.json'
+import userProfile from '../../../../../../mocks/UserProfile.json'
 
 const checkInsideCard = () => {
     const followersNumber = screen.getByTestId("followers-number");

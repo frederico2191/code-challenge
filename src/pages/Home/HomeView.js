@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Navbar from './components/Navbar/Navbar';
 import UserSection from './components/UserSection'
 import RepoSection from './components/RepoSection'
 
 import { styled } from '../../stitches.config';
+import ErrorFeedback from './components/ErrorFeedback';
 
 const FlexBox = styled('div',{
-  width: 'calc(100%)',
-  height:'calc(100%)',
+  width: '100%',
+  height:'100%',
   minHeight: '100vh',
   paddingBottom: '10rem',
   display: 'flex',
@@ -18,23 +19,19 @@ const FlexBox = styled('div',{
 
 const Box = styled('div',{
   maxWidth:"1200px",
-  width:"1050px",
-})
-
-const ErrorComponent = styled("div", {
-  marginTop: '5rem',
-  textAlign: 'center',
+  minWidth:"1050px",
+  marginLeft:"20px"
 })
 
 const firstSectionTitle = "Trending Users"
 const secondSectionTitle = "Most Active Users"
 const thirdSectionTitle = "Top Repositories"
 
-const HomeView = ({searched,topRepositories, topActiveUsers, topPopularUsers, error}) => (
+const HomeView = ({ searched,topRepositories, topActiveUsers, topPopularUsers, error }) => (
   <>
     <Navbar searched={searched}/>
     <FlexBox>
-      <Box> {error ? <ErrorComponent>An error has occured. Please try again.</ErrorComponent> : (
+      <Box> {error ? <ErrorFeedback/> : (
         <>
           <UserSection title={firstSectionTitle} users={topPopularUsers} error={error}/>
           <UserSection title={secondSectionTitle} users={topActiveUsers} error={error}/> 

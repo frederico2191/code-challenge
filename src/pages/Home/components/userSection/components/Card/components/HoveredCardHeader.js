@@ -1,6 +1,5 @@
 import React from 'react'
-import { styled } from '../../../../../../stitches.config'
-
+import { styled } from '../../../../../../../stitches.config'
 
 const AvatarImageBox = styled('img',{
     height: '56px',
@@ -9,8 +8,7 @@ const AvatarImageBox = styled('img',{
     position: 'absolute',
     zIndex: 11,
     top:'26px'
-  })
-
+})
 
 const Box = styled('div',{
     height:'82px',
@@ -18,7 +16,7 @@ const Box = styled('div',{
     display: 'flex',
     justifyContent:'center',
     alignItems:'start',
-  })
+})
   
   const ImagesBox = styled('div',{
     height: '76px',
@@ -27,16 +25,14 @@ const Box = styled('div',{
     display: 'flex',
     justifyContent:'center',
     position: 'relative'
-  })
-  
+})  
 
-const HoveredCardHeader = ({image}) => {
-  return (<Box>
-        <ImagesBox>
-            <AvatarImageBox src={image} alt="avatar-image"/>
-        </ImagesBox>
-    </Box>
-  )
-}
+const HoveredCardHeader = ({image}) => (
+  <Box>
+    <ImagesBox>
+      <AvatarImageBox src={image} alt="avatar-image"/>
+    </ImagesBox>
+  </Box>
+)
 
 export default HoveredCardHeader

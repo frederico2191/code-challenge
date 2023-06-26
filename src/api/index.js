@@ -22,14 +22,7 @@ const getTopActiveUsers = async ({searched}) => {
     return fetchedTopActiveUsers
 }
 
-const getUser = async (url) => {
-    try {
-        return awaitResponse(url) 
-    } catch (error) {
-        console.log('error getting user: ', error)
-        return { error }
-    }
-}
+const getUser = async (url) => awaitResponse(url) 
 
 const getUserTopRatedRepo = async ({ username }) => {
     const query = encodeURIComponent(`user:${username}`)
