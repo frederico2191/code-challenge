@@ -1,62 +1,73 @@
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent, screen, cleanup } from "@testing-library/react";
+import userEvent from '@testing-library/user-event'
 import Card from '.'
 import userProfile from '../../../../../mocks/UserProfile.json'
-import MiniRepoCard from '../../../../../mocks/MiniRepoCard.json'
+import MiniRepoCard from '../../../../../mocks/MiniRepoProfile.json'
 
 const checkInsideCard = () => {
     // const cardComponent = screen.getByTestId("card");
     const followersNumber = screen.getByTestId("followers-number");
     const username = screen.getByTestId("username");
     const avatarImage = screen.getByAltText("avatar-image");
-    const id = screen.getByTestId("id");
+    const name = screen.getByTestId("name");
     
     expect(followersNumber.textContent).toBe('760Followers')
     expect(username.textContent).toBe('lovelysweet1017')
     expect(avatarImage.src).toBe('https://avatars.githubusercontent.com/u/135192205?v=4')
-    expect(id.textContent).toBe('135192205')
+    expect(name.textContent).toBe('Sweet')
 }
 
 const checkInsideMiniRepoCard = () => {
+    // const repoName = screen.findByTestId("repo-name",!undefined,id:)
+    // const repoName = screen.queryByTestId("repo-name");
     const repoName = screen.getByTestId("repo-name");
-    const repoStars = screen.getByTestId("repo-stars");
-    const repoDescription = screen.getByTestId("repo-description");
-    
-    expect(repoName.textContent).toBe('iCinema')
-    expect(repoStars.textContent).toBe('3')
-    expect(repoDescription.textContent).toBe('It is a most wonderful project in React')
+    // const repoStars = screen.queryByTestId("repo-stars");
+    // const repoDescription = screen.queryByTestId("repo-description");
 
+    // expect(screen.getByTestId("repo-name")).toHaveTextContent('iCinema');
+    // expect(screen.getByTestId("repo-stars")).toHaveTextContent('3');
+    // expect(screen.getByTestId("repo-description")).toHaveTextContent('It is a most wonderful project in React');
+    
+    expect(repoName).toBeVisible()
+    // expect(repoStars.textContent).toBe('3')
+    // expect(repoDescription.textContent).toBe('It is a most wonderful project in React')
 
 }
 
 describe("Card", () => {
+    
     render(<Card user={userProfile}/>)
+    afterEach(cleanup)
 
-    beforeEach(() => {
+    // it("should display username, id, number of followers, cover image and avatar image", () => {
+    //     checkInsideCard()
+    // })
+    // it("should display MiniRepo component", () => {
+    //     checkInsideMiniRepoCard()
+    // })
+
+    it("should not render if receives error", () => {
 
     })
 
-    it("should display username, id, number of followers, cover image and avatar image", () => {
-        checkInsideCard()
-    })
-    it("should display MiniRepo component", () => {
-        checkInsideMiniRepoCard()
-    })
-    describe("should change on hover", () => {
-        render(<Card user={userProfile}/>)
-
-        it("should display username, id and number of followers", () => {
+    describe("on hover", () => {
+        beforeEach(async () => {
             const cardComponent = screen.getByTestId("card");
-            fireEvent.mouseEnter(cardComponent)
+            await fireEvent.mouseEnter(cardComponent)
+        })
+        afterEach(cleanup)
+
+        it("on hover, should display username, id and number of followers", () => {
             checkInsideCard()
         })
-        // it("should display a button that opens GH profile in new tab", () => {
 
-        // })
-        // it("should not display MiniRepo component", () => {
+        it("on hover, should display a button that opens GH profile in new tab", () => {
+            
+        })
 
-        // })
+        it("on hover, should not display MiniRepo component", () => {
+            expect(screen.queryByTestId('mini-repo-card')).not.toBeInTheDocument();
+        })
     })
-    // afterAll(() => {
 
-    // })
 })

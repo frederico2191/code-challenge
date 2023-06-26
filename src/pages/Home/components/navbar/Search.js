@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from '../../../../stitches.config'
 import { BsSearch } from 'react-icons/bs';
 import { useSearchParams } from 'react-router-dom';
+import _ from 'lodash'
 
 const SearchWrapper = styled("div",{
   width:'500px',
@@ -27,36 +28,28 @@ const SearchIcon = styled(BsSearch, {
   marginLeft: 10
 })
 
-const Search = ({searched}) => {
+const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchText, setSearchText] = useState('');
-  const handleChange = (event) => {
-    setSearchText(event.target.value);
-  };
-  
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      // 👇 Get input value
-      console.log("PRESSED ENTER", searchText)
-      setSearchText('')
-    }
-  };
-  
-  let bilo
 
+  useEffect(() => {
+    console.log('entered useEffect', searchParams.get("query"))
+    setSearchText(searchParams.get("query"))
+  },[searchParams])
   
-  const handleSearch = (e) => {
-    // setSearchParams(e.target.value)
-    bilo = e.target.value
-    // console.log("billloooo", bilo)
-    setSearchText(e.target.value)
+  // const handleSearch = _.debounce((event) => {
+  //   searchParams.set("query", event.target.value)
+  //   setSearchParams(searchParams)
+  // }, 500)
 
+  const handleSearch = (event) => {
+    searchParams.set("query", event.target.value)
+    setSearchParams(searchParams)
   }
+
   return (
     <SearchWrapper>
-      <Input type="search" value={searchText} onKeyDown={handleKeyDown} placeholder='Search' onChange={handleSearch}/>
-      {/* <Input type="search" placeholder='Search' value={(e)=>e.target.value} onChange={handleSearch}/> */}
-      {/* <Input placeholder='Search' value={searched} onChange={handleSearch}/> */}
+      <Input autoFocus="autoFocus" type="text" value={searchText} placeholder='Search' onChange={handleSearch}/>
       <SearchIcon/>
     </SearchWrapper>
   )

@@ -69,15 +69,14 @@ const LowerBox = styled('div',{
 const MiniRepoCardView = ({repo}) => {
     const noDescription = 'No description added'
     const noRepoName = 'No name added'
-    const {name,description, stargazers_count} = repo
  
   return (
     <BoxWrapper>
         <UpperBox>
-            <RepoName data-testid="repo-name">{name || noRepoName}</RepoName>
-            <RepoStars data-testid="repo-stars" starsCount={stargazers_count || 0}/>
+            <RepoName data-testid="repo-name">{repo?.name || noRepoName}</RepoName>
+            <RepoStars data-testid="repo-stars" starsCount={repo?.stargazers_count || 0}/>
         </UpperBox>
-        <LowerBox data-testid="repo-description" > {description || noDescription}</LowerBox>
+        <LowerBox data-testid="repo-description" > {repo?.description || noDescription}</LowerBox>
     </BoxWrapper>
   )
 }

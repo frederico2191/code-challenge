@@ -2,34 +2,32 @@ import React from 'react'
 import Card from './Card'
 import { styled } from '../../../../stitches.config'
 
-const UserSectionView = ({title, users}) => {
-  console.log("USERS SECTION VIEW",users)
-  const BoxWrapper = styled('div',{
-    marginTop:'30px',
-  })
-  const Box = styled('div',{
-    marginTop: '10px',
-    width:'calc(100%)',
-    // backgroundColor: "blue",
-    display: 'flex',
-    flexDirection:'row',
-    justifyContent:'space-between'
-  })
+const BoxWrapper = styled('div',{
+  marginTop:'3.5rem',
+})
 
-  const Title = styled('h3',{
-    color:'$blueTextBody'
-  })
-  
+const Box = styled('div',{
+  marginTop: '10px',
+  width:'calc(100%)',
+  display: 'flex',
+  flexDirection:'row',
+  justifyContent:'space-between'
+})
 
-  return (<BoxWrapper>
+const Title = styled('h3',{
+  color:'$blueTextBody',
+  marginBottom: '2rem'
+})
+
+const UserSectionView = ({title, users, error}) => (
+  <BoxWrapper>
     <Title>{title}</Title>
     <Box>
-    {users?.map((user) => (
-        <Card key={user.id} user={user}/>
+    {Array.isArray(users) && users.map((user) => (
+        <Card key={user.id} user={user} error={error}/>
     ))}
     </Box>
-    </BoxWrapper>
-  )
-}
+  </BoxWrapper>
+)
 
 export default UserSectionView

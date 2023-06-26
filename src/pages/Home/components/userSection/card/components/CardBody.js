@@ -1,6 +1,5 @@
 import React from 'react'
 import { styled } from '../../../../../../stitches.config'
-import { FaRegUser } from 'react-icons/fa';
 import FollowersInfo from './FollowersInfo';
 
 const Box = styled('div',{
@@ -44,11 +43,11 @@ const Id = styled('div',{
 
 
 const CardBody = ({user,color}) => {
-    const {login,id,followers} = user;
+    const {login,name,followers} = user;
   return (
     <Box color={color}>
         <UserName data-testid="username">{login}</UserName>
-        <Id data-testid="id">{id}</Id>
+        <Id data-testid="name">{name}</Id>
         <FollowersInfo color={color} followers={followers}/>
     </Box>
   )

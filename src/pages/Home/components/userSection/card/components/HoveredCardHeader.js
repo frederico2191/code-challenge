@@ -33,7 +33,7 @@ const Box = styled('div',{
 const HoveredCardHeader = ({image}) => {
   return (<Box>
         <ImagesBox>
-            <AvatarImageBox src={image} alt="Avatar Image"/>
+            <AvatarImageBox src={image} alt="avatar-image"/>
         </ImagesBox>
     </Box>
   )

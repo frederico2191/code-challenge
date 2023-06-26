@@ -26,23 +26,31 @@ const ProfileButton = styled('button',{
     alignItems:'center',
     fontSize: 12,
     backgroundColor:'transparent',
-    // textDecoration:'none !important',
 })
 
-const hrefNoDecoration = styled('a',{
+const OpenProfileLink = styled('a',{
   textDecoration:'none',
 
+  width: '115px',
+  height:'46px',
+  border:'solid',
+  color:'$greyLineBody',
+  borderRadius:'40px',
+  borderWidth:'1px',
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center',
+  fontSize: 12,
+  backgroundColor:'transparent',
+  pointerEvents: 'all'
 })
 
 const HoveredCardFooter = ({user}) => {
-    const {html_url} = user;
-    // const handleClick = () => console.log("html_url",html_url)
-    
+  const { html_url } = user;
+
   return (
     <Box>
-          <a href={html_url} target="_blank" rel="noopener noreferrer" ><ProfileButton> Open Profile
-        </ProfileButton>
-        </a>
+      <OpenProfileLink href={html_url} target="_blank" rel="noopener noreferrer" >Open Profile</OpenProfileLink>
     </Box>
   )
 }

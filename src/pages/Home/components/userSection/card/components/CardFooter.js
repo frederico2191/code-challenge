@@ -21,18 +21,12 @@ const Box = styled('div',{
   alignItems: 'center'
 })
 
-const CardFooter = ({repo}) => {
-
-
-  return (
-    <BoxWrapper>
-      <Box>
-        <MiniRepoCard repo={repo}/>
-      </Box>
-    </BoxWrapper>
-
-
-  )
-}
+const CardFooter = ({ repo }) => (
+  <BoxWrapper>
+    <Box>
+      <MiniRepoCard repo={repo}/>
+    </Box>
+  </BoxWrapper>
+)
 
 export default CardFooter

@@ -14,14 +14,18 @@ export const fetchUsers = async  (array) => {
 } 
 
 export const awaitResponse = async (url) => { 
-    const response = await axios.get(url,{
-    headers: {
-        Authorization: 'Bearer ' + process.env.REACT_APP_GITHUB_KEY
+    try {
+        const response = await axios.get(url,{
+            headers: {
+                Authorization: 'Bearer ' + process.env.REACT_APP_GITHUB_KEY
+            }
+        })
+        return response.data
+    } catch (error) {
+        console.log('error in search: ', error)
+        return { error }
     }
-     })
-    console.log("I am the utils return:",response.data)
-    return response.data
-    }
+}
 
 const monthAgoDate = new Date().setMonth(new Date().getMonth() - 1)
 export const monthAgo = moment(monthAgoDate).format('YYYY-MM-DD')

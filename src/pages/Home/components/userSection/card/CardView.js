@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { styled } from '../../../../../stitches.config'
 import CardHeader from './components/CardHeader'
 import CardBody from './components/CardBody'
 import CardFooter from './components/CardFooter'
-import { getUserTopRatedRepo } from '../../../../../api'
 
 const Box = styled('div',{
     $$shadow: '$colors$greyLineBody',
@@ -12,8 +11,7 @@ const Box = styled('div',{
     borderRadius:'6px',
     boxShadow: "2px 5px 3px 0px $$shadow",
     webkitBoxShadow: "5px 9px 10px 0px $blueNavyNavbar",
-    mozBoxShadow: "5px 9px 10px 0px $blueNavyNavbar"
-    
+    mozBoxShadow: "5px 9px 10px 0px $blueNavyNavbar",
   })
 
 const CardView = ({user, repo}) => {

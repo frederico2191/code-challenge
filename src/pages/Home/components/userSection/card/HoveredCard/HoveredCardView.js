@@ -50,15 +50,15 @@ const HoveredCardView = ({user}) => {
 
   return (
     <Box>
-       <CoverImageBoxWrapper>
-          <CoverImageBox>
-            <CoverImageOverlay />
-            <CoverImage src={avatar_url} alt="CoverImage"/>
-          </CoverImageBox>
-        </CoverImageBoxWrapper>
-            <HoveredCardHeader image={avatar_url} />
-            <CardBody color="transparent" user={user}/>
-            <HoveredCardFooter user={user}/>
+      <CoverImageBoxWrapper>
+        <CoverImageBox>
+          <CoverImageOverlay />
+          <CoverImage src={avatar_url} alt="cover-image"/>
+        </CoverImageBox>
+      </CoverImageBoxWrapper>
+      <HoveredCardHeader image={avatar_url} />
+      <CardBody color="transparent" user={user}/>
+      <HoveredCardFooter user={user}/>
     </Box>
   )
 }

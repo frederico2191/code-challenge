@@ -8,34 +8,41 @@ import { styled } from '../../stitches.config';
 const FlexBox = styled('div',{
   width: 'calc(100%)',
   height:'calc(100%)',
+  minHeight: '100vh',
+  paddingBottom: '10rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor:'$whiteBackground'
 })
+
 const Box = styled('div',{
   maxWidth:"1200px",
   width:"1050px",
 })
 
+const ErrorComponent = styled("div", {
+  textAlign: 'center',
+})
 
-const HomeView = ({searched,topRepositories, topActiveUsers, topPopularUsers}) => {
-  const firstSectionTitle = "Trending Users"
-  const secondSectionTitle = "Most Active Users"
-  const thirdSectionTitle = "Top Repositories"
-  
-    return (
-      <>
-      <Navbar searched={searched}/>
-      <FlexBox>
-        <Box>
-            {/* <UserSection title={firstSectionTitle} users={topPopularUsers}/> */}
-            {/* <UserSection title={secondSectionTitle} users={topActiveUsers}/>  */}
-            <RepoSection title={thirdSectionTitle} repos={topRepositories} />
-        </Box>
-      </FlexBox>
-    </>
-    )
-  }
+const firstSectionTitle = "Trending Users"
+const secondSectionTitle = "Most Active Users"
+const thirdSectionTitle = "Top Repositories"
+
+const HomeView = ({searched,topRepositories, topActiveUsers, topPopularUsers, error}) => (
+  <>
+    <Navbar searched={searched}/>
+    <FlexBox>
+      <Box> {error ? <ErrorComponent>An error has occured. Please try again.</ErrorComponent> : (
+        <>
+          <UserSection title={firstSectionTitle} users={topPopularUsers} error={error}/>
+          <UserSection title={secondSectionTitle} users={topActiveUsers} error={error}/> 
+          <RepoSection title={thirdSectionTitle} repos={topRepositories} />
+        </>
+      )}
+      </Box>
+    </FlexBox>
+  </>
+)
 
 export default HomeView
