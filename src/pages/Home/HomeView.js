@@ -12,7 +12,7 @@ const FlexBox = styled('div',{
   paddingBottom: '10rem',
   display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'start',
   backgroundColor:'$whiteBackground'
 })
 
@@ -22,6 +22,7 @@ const Box = styled('div',{
 })
 
 const ErrorComponent = styled("div", {
+  marginTop: '5rem',
   textAlign: 'center',
 })
 

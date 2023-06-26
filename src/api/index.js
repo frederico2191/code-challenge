@@ -1,7 +1,7 @@
 import { awaitResponse, monthAgo, yearAgo, BASE_URL, MAX_PROFILES,MAX_REPOS} from "./utils";
 
 const getTopPopularUsers = async ({searched}) => {
-    const query = encodeURIComponent(searched ? `${searched} created:>=${monthAgo}`: `created:>=${monthAgo}`)
+    const query = encodeURIComponent(searched?.trim() ? `${searched} created:>=${monthAgo}`: `created:>=${monthAgo}`)
     const url = `${BASE_URL}/search/users?q=${query}&sort=followers&per_page=${MAX_PROFILES}`
     let response = await awaitResponse(url)
 
@@ -12,7 +12,7 @@ const getTopPopularUsers = async ({searched}) => {
 }
    
 const getTopActiveUsers = async ({searched}) => {
-    const query = encodeURIComponent(searched ? `${searched} created:>=${monthAgo}`: `created:>=${monthAgo}`)
+    const query = encodeURIComponent(searched?.trim() ? `${searched} created:>=${monthAgo}`: `created:>=${monthAgo}`)
     const url = `${BASE_URL}/search/users?q=${query}&sort=repositories&per_page=${MAX_PROFILES}`
     let response = await awaitResponse(url)
 
@@ -39,7 +39,7 @@ const getUserTopRatedRepo = async ({ username }) => {
 }
 
 const getTopRepositories = async ({searched}) => {
-    const query = encodeURIComponent(searched ? `created:>=${yearAgo} in:name ${searched}`: `created:>=${yearAgo}`)
+    const query = encodeURIComponent(searched?.trim() ? `created:>=${yearAgo} in:name ${searched}`: `created:>=${yearAgo}`)
     const url = `${BASE_URL}/search/repositories?q=${query}&sort=stars&per_page=${MAX_REPOS}`
     
     return awaitResponse(url)

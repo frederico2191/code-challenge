@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { styled } from '../../../../stitches.config'
 import { BsSearch } from 'react-icons/bs';
 import { useSearchParams } from 'react-router-dom';
@@ -31,25 +31,34 @@ const SearchIcon = styled(BsSearch, {
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchText, setSearchText] = useState('');
+  const [cursor, setCursor] = useState(0)
+
+  const ref = useRef(null)
 
   useEffect(() => {
-    console.log('entered useEffect', searchParams.get("query"))
+    const input = ref.current
+    const searchParamsLength = searchParams.get("query")?.length
+    if (input) {
+      input.setSelectionRange(searchParamsLength, searchParamsLength)
+      setCursor(searchParamsLength)
+    }
+}, [ref, cursor, searchParams])
+
+  useEffect(() => {
     setSearchText(searchParams.get("query"))
   },[searchParams])
   
-  // const handleSearch = _.debounce((event) => {
-  //   searchParams.set("query", event.target.value)
-  //   setSearchParams(searchParams)
-  // }, 500)
-
-  const handleSearch = (event) => {
-    searchParams.set("query", event.target.value)
+  const handleSearch = _.debounce((event) => {
+    searchParams.set("query", event.target.value || '')
     setSearchParams(searchParams)
-  }
+    setCursor(event.target.value?.length)
+  }, 500)
+
+  const resetFocus = (event) => event.target.selectionEnd = cursor
 
   return (
     <SearchWrapper>
-      <Input autoFocus="autoFocus" type="text" value={searchText} placeholder='Search' onChange={handleSearch}/>
+      <Input ref={ref} autoFocus="autoFocus" onFocus={resetFocus} type="text" defaultValue={searchText} placeholder='Search' onChange={handleSearch}/>
       <SearchIcon/>
     </SearchWrapper>
   )

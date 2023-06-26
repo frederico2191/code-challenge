@@ -4,6 +4,7 @@ import { styled } from '../../../../stitches.config'
 
 const BoxWrapper = styled('div',{
   marginTop:'3.5rem',
+  minHeight: '380px'
 })
 
 const Box = styled('div',{
