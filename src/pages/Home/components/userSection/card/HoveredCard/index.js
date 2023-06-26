@@ -1,2 +1,2 @@
-import HoveredCardContainer from './HoveredCardContainer'
-export default HoveredCardContainer
+import HoveredCard from './HoveredCard'
+export default HoveredCard

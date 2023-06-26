@@ -19,7 +19,6 @@ const Input = styled("input",{
   outline: 'none',
   paddingLeft: 35,
   height: 25,
-  // display:'block'
 })
 
 const SearchIcon = styled(BsSearch, {

@@ -16,11 +16,13 @@ const Box = styled('div',{
 
 const CardView = ({user, repo}) => {
   const {avatar_url} = user;
-  return <Box>
-            <CardHeader image={avatar_url} />
-            <CardBody color="white" user={user}/>
-            <CardFooter repo={repo}/>
+  return (
+    <Box>
+      <CardHeader image={avatar_url} />
+      <CardBody color="white" user={user}/>
+      <CardFooter repo={repo}/>
     </Box>
+  )
 }
 
 export default CardView

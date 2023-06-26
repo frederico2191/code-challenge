@@ -50,7 +50,7 @@ const HoveredCardFooter = ({user}) => {
 
   return (
     <Box>
-      <OpenProfileLink href={html_url} target="_blank" rel="noopener noreferrer" >Open Profile</OpenProfileLink>
+      <OpenProfileLink data-testid="profile-link" href={html_url} target="_blank" rel="noopener noreferrer" >Open Profile</OpenProfileLink>
     </Box>
   )
 }

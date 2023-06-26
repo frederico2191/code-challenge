@@ -1,2 +1,2 @@
-import UserSectionContainer from "./UserSectionContainer"
-export default UserSectionContainer
+import UserSection from "./UserSection"
+export default UserSection

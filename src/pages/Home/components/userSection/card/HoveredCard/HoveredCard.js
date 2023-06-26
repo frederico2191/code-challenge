@@ -4,7 +4,6 @@ import HoveredCardHeader from '../components/HoveredCardHeader'
 import HoveredCardFooter from '../components/HoveredCardFooter'
 import { styled } from '../../../../../../stitches.config'
 
-
 const Box = styled('div',{
   width:"320px",
   height:"320px",
@@ -45,8 +44,8 @@ const CoverImage = styled("img", {
   borderRadius: '6px'
 })
 
-const HoveredCardView = ({user}) => {
-    const {avatar_url} = user
+const HoveredCard = ({user}) => {
+  const { avatar_url } = user
 
   return (
     <Box>
@@ -63,4 +62,4 @@ const HoveredCardView = ({user}) => {
   )
 }
 
-export default HoveredCardView
+export default HoveredCard

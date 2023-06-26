@@ -1,11 +1,8 @@
 import { render, fireEvent, screen, cleanup } from "@testing-library/react";
-import userEvent from '@testing-library/user-event'
 import Card from '.'
 import userProfile from '../../../../../mocks/UserProfile.json'
-import MiniRepoCard from '../../../../../mocks/MiniRepoProfile.json'
 
 const checkInsideCard = () => {
-    // const cardComponent = screen.getByTestId("card");
     const followersNumber = screen.getByTestId("followers-number");
     const username = screen.getByTestId("username");
     const avatarImage = screen.getByAltText("avatar-image");
@@ -17,57 +14,57 @@ const checkInsideCard = () => {
     expect(name.textContent).toBe('Sweet')
 }
 
-const checkInsideMiniRepoCard = () => {
-    // const repoName = screen.findByTestId("repo-name",!undefined,id:)
-    // const repoName = screen.queryByTestId("repo-name");
-    const repoName = screen.getByTestId("repo-name");
-    // const repoStars = screen.queryByTestId("repo-stars");
-    // const repoDescription = screen.queryByTestId("repo-description");
-
-    // expect(screen.getByTestId("repo-name")).toHaveTextContent('iCinema');
-    // expect(screen.getByTestId("repo-stars")).toHaveTextContent('3');
-    // expect(screen.getByTestId("repo-description")).toHaveTextContent('It is a most wonderful project in React');
-    
-    expect(repoName).toBeVisible()
-    // expect(repoStars.textContent).toBe('3')
-    // expect(repoDescription.textContent).toBe('It is a most wonderful project in React')
-
+const hoverCard = async () => {
+    const cardComponent = screen.getByTestId("card");
+    await fireEvent.mouseEnter(cardComponent)
 }
 
-describe("Card", () => {
-    
+afterEach(cleanup)
+
+test("should display username, name, number of followers, cover image and avatar image", () => {
     render(<Card user={userProfile}/>)
-    afterEach(cleanup)
+    checkInsideCard()
+})
 
-    // it("should display username, id, number of followers, cover image and avatar image", () => {
-    //     checkInsideCard()
-    // })
-    // it("should display MiniRepo component", () => {
-    //     checkInsideMiniRepoCard()
-    // })
+test("should render MiniRepoCard component", () => {
+    render(<Card user={userProfile}/>)
+    expect(screen.getByTestId('mini-repo-card')).toBeInTheDocument();
+})
 
-    it("should not render if receives error", () => {
+test("should not render on error", () => {
+    render(<Card user={userProfile} error={true}/>)
+    expect(screen.queryByTestId("card")).not.toBeInTheDocument()
+})
 
-    })
+test("on hover, should display username, name and number of followers", async () => {
+    render(<Card user={userProfile}/>)
+    await hoverCard()
+    checkInsideCard()
+})
 
-    describe("on hover", () => {
-        beforeEach(async () => {
-            const cardComponent = screen.getByTestId("card");
-            await fireEvent.mouseEnter(cardComponent)
-        })
-        afterEach(cleanup)
+test("on hover, should display a button that opens GH profile in new tab", async () => {
+    render(<Card user={userProfile}/>)
+    await hoverCard()
+    expect(screen.getByTestId('profile-link')).toHaveAttribute('href', 'https://github.com/lovelysweet1017');
+})
 
-        it("on hover, should display username, id and number of followers", () => {
-            checkInsideCard()
-        })
+test("on hover, should not display MiniRepo component", async () => {
+    render(<Card user={userProfile}/>)
+    await hoverCard()
+    expect(screen.queryByTestId('mini-repo-card')).not.toBeInTheDocument();
+})
 
-        it("on hover, should display a button that opens GH profile in new tab", () => {
-            
-        })
+test("on hover leave, should display normal card again", async () => {
+    render(<Card user={userProfile}/>)
 
-        it("on hover, should not display MiniRepo component", () => {
-            expect(screen.queryByTestId('mini-repo-card')).not.toBeInTheDocument();
-        })
-    })
+    const cardComponent = screen.getByTestId("card");
+    await fireEvent.mouseEnter(cardComponent)
 
+    checkInsideCard()
+    expect(screen.queryByTestId('mini-repo-card')).not.toBeInTheDocument();
+
+    await fireEvent.mouseLeave(cardComponent)
+
+    expect(screen.queryByTestId('mini-repo-card')).toBeVisible()
+    expect(screen.queryByTestId('profile-link')).not.toBeInTheDocument()
 })

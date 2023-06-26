@@ -1,15 +1,14 @@
 import React from 'react'
-import { styled } from '../../../../stitches.config';
-import RepoStars from '../../../../components/RepoStars';
-
-
-
+import { styled } from '../../../../../../stitches.config';
+import RepoStars from '../../../../../../components/RepoStars';
 
 const RepoName = styled('div',{
     color:'$blueTextBody',
     fontWeight: 'bold',
     marginTop: '48px',
-    marginBottom:'20px'
+    marginBottom:'20px',
+    textAlign: 'center',
+    padding: '0 $1'
 })
 
 const RepoDescription = styled('div',{
@@ -25,9 +24,7 @@ const RepoDescription = styled('div',{
     // whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
-
 })
-
 
 const Box = styled('div', {
     $$shadow: '$colors$greyLineBody',
@@ -47,26 +44,19 @@ const Box = styled('div', {
     // mozBoxShadow: "5px 9px 10px 0px $blueNavyNavbar"
   })
 
+const noDescription = 'No description added'
+const variants = ['$blueNavyBody','$blueSkyBody','$blueLightBody','$blueLightestBody']
 
-const RepoCard = ({repo,index}) => {
-    const noDescription = 'No description added'
-    const variants = ['$blueNavyBody','$blueSkyBody','$blueLightBody','$blueLightestBody']
-    
-    const borderColor = () => variants[index]
-    
-    console.log('borderColor', borderColor)
-    console.log("popular repo", repo)
-    const {name,description,stargazers_count} = repo;
+const borderColor = (index) => variants[index]
 
+const RepoCard = ({ repo, index }) => {
+  const { name, description, stargazers_count } = repo;
   return (
-    <Box css={{ borderColor: borderColor() }}>
-        <RepoName>{name}</RepoName>
-        <RepoStars starsCount={stargazers_count}/>
-        <RepoDescription>{description || noDescription}</RepoDescription>
-            {/* <CardHeader image={avatar_url} />
-            <CardBody user={user}/>
-            <CardFooter user={user}/> */}
-  </Box>
+    <Box css={{ borderColor: borderColor(index) }}>
+      <RepoName>{name}</RepoName>
+      <RepoStars starsCount={stargazers_count}/>
+      <RepoDescription>{description || noDescription}</RepoDescription>
+    </Box>
   )
 }
 

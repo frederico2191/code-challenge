@@ -32,8 +32,6 @@ const CardContainer = ({user, error}) => {
     const handleEnterHover = () => setHovered(true)
     const handleLeaveHover = () => setHovered(false)
 
-    // <CardWrapper>
-
   return !error && (
       <HoverElement data-testid="card" onMouseEnter={handleEnterHover} onMouseLeave={handleLeaveHover}>
         {hovered? <HoveredCard repo={repo} user={user}/> : <CardView  repo={repo} user={user}/>}

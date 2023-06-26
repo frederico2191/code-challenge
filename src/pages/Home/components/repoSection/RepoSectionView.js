@@ -1,6 +1,6 @@
 import React from 'react'
 import { styled } from '../../../../stitches.config'
-import RepoCard from './RepoCard.js'
+import RepoCard from './components/RepoCard'
 
 const BoxWrapper = styled('div',{
   marginTop:'3.5rem',
@@ -19,7 +19,7 @@ const Title = styled('h3',{
   marginBottom: '2rem'
 })
 
-const RepoSectionView = ({title, repos, error}) => !error && (
+const RepoSectionView = ({title, repos}) => (
   <BoxWrapper>
     <Title>{title}</Title>
     <Box>

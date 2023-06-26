@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { styled } from '../../../../../../../stitches.config'
-import { getUserTopRatedRepo } from '../../../../../../../api'
 import RepoStars from '../../../../../../../components/RepoStars';
-
-
-
 
 const BoxWrapper= styled('div',{
     height:'68px',
@@ -13,8 +9,6 @@ const BoxWrapper= styled('div',{
     borderRadius: '6px',
     borderLeftWidth: '6px',
     width: '208px'
-
-
 })
 
 const UpperBox = styled('div',{
@@ -24,7 +18,6 @@ const UpperBox = styled('div',{
     // marginTop: '$1',
     alignItems: 'center',
     padding: '7px 10px',
-
 })
 
 const RepoName = styled('div',{
@@ -36,6 +29,7 @@ const RepoName = styled('div',{
     textOverflow: 'ellipsis',
     marginRight:'auto'
 })
+
 const LowerBox = styled('div',{
     color: '$blueTextBody',
     padding: '7px 10px 3px 10px',
@@ -45,40 +39,17 @@ const LowerBox = styled('div',{
     fontSize:'12px'
 })
 
-// const RepoTotalStars = styled('div',{
-//     color:'$blueNavyBody',
-//     display:'flex',
-//     alignItems: 'center',
-//     fontSize: 'large',
-//     justifyContent:'space-between',
-//     marginLeft:'auto',
-// })
+const noDescription = 'No description added'
+const noRepoName = 'No name added'
 
-// const StarIcon = styled('div',{
-//     marginRight: '2px',
-//     display: 'flex',
-//     justifyContent:'center',
-
-
-// })
-// const StarsCount = styled('div',{
-// })
-
-
-
-const MiniRepoCardView = ({repo}) => {
-    const noDescription = 'No description added'
-    const noRepoName = 'No name added'
- 
-  return (
-    <BoxWrapper>
+const MiniRepoCard = ({repo}) => (
+    <BoxWrapper data-testid="mini-repo-card">
         <UpperBox>
             <RepoName data-testid="repo-name">{repo?.name || noRepoName}</RepoName>
-            <RepoStars data-testid="repo-stars" starsCount={repo?.stargazers_count || 0}/>
+            <RepoStars starsCount={repo?.stargazers_count || 0}/>
         </UpperBox>
         <LowerBox data-testid="repo-description" > {repo?.description || noDescription}</LowerBox>
     </BoxWrapper>
-  )
-}
+)
 
-export default MiniRepoCardView
+export default MiniRepoCard

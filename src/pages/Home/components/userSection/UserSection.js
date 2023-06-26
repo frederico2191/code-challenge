@@ -20,15 +20,15 @@ const Title = styled('h3',{
   marginBottom: '2rem'
 })
 
-const UserSectionView = ({title, users, error}) => (
+const UserSection = ({title, users, error}) => (
   <BoxWrapper>
-    <Title>{title}</Title>
+    <Title data-testid="section-title">{title}</Title>
     <Box>
-    {Array.isArray(users) && users.map((user) => (
+      {Array.isArray(users) && users.map((user) => (
         <Card key={user.id} user={user} error={error}/>
-    ))}
+      ))}
     </Box>
   </BoxWrapper>
 )
 
-export default UserSectionView
+export default UserSection

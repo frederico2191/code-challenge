@@ -1,48 +1,35 @@
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import MiniRepoCard from '.'
 import MiniRepoProfile from '../../../../../../../mocks/MiniRepoProfile.json'
 
-const checkInsideMiniRepoCard = () => {
-    const repoName = screen.getByTestId("repo-name");
+test("should display repo name, description and amount of stars", () => {
+    render(<MiniRepoCard repo={MiniRepoProfile}/>)
+
+    expect(screen.getByTestId("mini-repo-card")).toBeVisible()
+
+    const repoName = screen.getByTestId("repo-name")
     const repoStars = screen.getByTestId("repo-stars");
     const repoDescription = screen.getByTestId("repo-description");
+
+    expect(screen.getByTestId("repo-name")).toHaveTextContent('Joalor64-Engine-Rewrite');
+    expect(repoStars).toHaveTextContent('15');
+    expect(repoDescription).toHaveTextContent('Just Joalor64 Engine remade on Psych Engine 0.6.3. And no, the original IS NOT discontinued.');
     
-    expect(repoName.textContent).toBe('iCinema')
-    expect(repoStars.textContent).toBe('3')
-    expect(repoDescription.textContent).toBe('It is a most wonderful project in React')
+    expect(repoName).toBeVisible()
+})
 
+test("should display fallback if repo not found or error", () => {
+    render(<MiniRepoCard repo={{}}/>)
 
-}
+    expect(screen.getByTestId("mini-repo-card")).toBeVisible()
 
-describe("MiniRepoCard", () => {
-    render(<MiniRepoCard user={MiniRepoProfile}/>)
+    const repoName = screen.getByTestId("repo-name")
+    const repoStars = screen.getByTestId("repo-stars");
+    const repoDescription = screen.getByTestId("repo-description");
 
-    beforeEach(() => {
-
-    })
-
-    it("should display repo name, description and amount of stars", () => {
-        checkInsideMiniRepoCard()
-    })
-    it("should display MiniRepo component", () => {
-        checkInsideMiniRepoCard()
-    })
-    describe("should change on hover", () => {
-        render(<MiniRepoCard repo={MiniRepoProfile}/>)
-
-        // it("should display username, id and number of followers", () => {
-        //     const cardComponent = screen.getByTestId("card");
-        //     fireEvent.mouseEnter(cardComponent)
-        //     chekInsideCard()
-        // })
-        // it("should display a button that opens GH profile in new tab", () => {
-
-        // })
-        // it("should not display MiniRepo component", () => {
-
-        // })
-    })
-    // afterAll(() => {
-
-    // })
+    expect(screen.getByTestId("repo-name")).toHaveTextContent('No name added');
+    expect(repoStars).toHaveTextContent('0');
+    expect(repoDescription).toHaveTextContent('No description added');
+    
+    expect(repoName).toBeVisible()
 })

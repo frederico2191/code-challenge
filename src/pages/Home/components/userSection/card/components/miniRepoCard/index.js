@@ -1,2 +1,2 @@
-import MiniRepoCardContainer from './MiniRepoCardContainer'
-export default MiniRepoCardContainer
+import MiniRepoCard from './MiniRepoCard'
+export default MiniRepoCard
