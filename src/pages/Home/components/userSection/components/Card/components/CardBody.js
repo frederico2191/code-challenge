@@ -25,15 +25,13 @@ const Box = styled('div',{
 })
 
 const UserName = styled('div',{
-    // color:'$blueTextBody',
     fontWeight:'bold',
     marginTop:'19px',
     color:'inherit'
 })
 
 const Id = styled('div',{
-    // color:'$blueTextBody',
-    fontSize:'12px',
+    fontSize:'$12',
     marginTop:'11px',
     marginBottom:'12px',
     color:'inherit'

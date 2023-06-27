@@ -11,14 +11,15 @@ const BoxWrapper = styled('div',{
 
 const Box = styled('div',{
   marginTop: '10px',
-  // width:'calc(100%)',
   maxWidth: '100vw',
+  minHeight:'330px',
   gap: '10px',
   display: 'flex',
   flexDirection:'row',
   justifyContent:'space-between',
   margin: '0 auto',
   overflowX: 'scroll',
+  padding: '$1'
 })
 
 const Title = styled('h3',{

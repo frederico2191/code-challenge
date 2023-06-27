@@ -7,6 +7,7 @@ const BoxWrapper = styled('div',{
   justifyContent:'center',
   backgroundColor: '$whiteCard',
   height:'115px',
+  borderRadius: '6px',
 })
 
 const Box = styled('div',{

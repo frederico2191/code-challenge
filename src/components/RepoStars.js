@@ -18,7 +18,6 @@ const StarIcon = styled('div',{
 })
 
 const StarsCount = styled('div',{
-
 })
 
 const RepoStars = ({ starsCount }) => (

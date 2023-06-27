@@ -7,11 +7,9 @@ const Bar = styled("div",{
   backgroundColor: '$blueNavyNavbar',
   display: "flex",
   justifyContent:"space-around",
-  // width:'calc(100%)',
-  // px: '30px',
   height:"64px",
-  paddingLeft:"$2",
-  paddingRight: "$2"
+  paddingLeft:"$3",
+  paddingRight: "$3"
 })
 
 const NavContainer = styled("div", {

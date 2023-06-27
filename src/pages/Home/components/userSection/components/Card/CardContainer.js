@@ -11,12 +11,6 @@ const HoverElement = styled("div", {
   zIndex: 30
 })
 
-// const CardWrapper = styled("div", {
-//   height: '100%',
-//   width: '100%',
-//   position: 'relative',
-// })
-
 const CardContainer = ({user, error}) => {
   const [hovered, setHovered] = useState(false)
   const [repo, setRepo] = useState('')

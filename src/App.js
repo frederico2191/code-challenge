@@ -9,28 +9,3 @@ const App = () => (
 )
 
 export default App;
-
-// const App = () => {
-
-//   useEffect(() => {
-//         globalStyles()
-//       }, [])
-
-//   return <BrowserRouter>
-//       <RouterConfig />
-//     </BrowserRouter>
-
-// }
-
-// export default App;
-
-// const App = ({ RouterConfig, pageProps }: AppProps) => {
-//   useEffect(() => {
-//     globalStyles()
-//   }, [])
-//   return <BrowserRouter>
-//       <RouterConfig {...pageProps}/>
-//     </BrowserRouter>
-
-// }
-// export default App;

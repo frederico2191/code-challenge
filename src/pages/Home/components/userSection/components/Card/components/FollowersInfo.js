@@ -7,7 +7,6 @@ const Box = styled('div',{
     alignContent: 'center',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    // color:'$blueNavyNavbar',
     color:'inherit',
 })
 
@@ -21,7 +20,6 @@ const FollowersTotal = styled('div',{
 const FollowersText = styled('div',{
     fontSize:'small',
     color:'$greyTextBody',
-    // color:'inherit',
     marginLeft:'$1',
     fontWeight:'lighter'
 })

@@ -7,13 +7,7 @@ const Box = styled('div',{
     justifyContent: 'center',
     zIndex:11,
     position: 'relative',
-    marginTop:'$3',
-    // textDecoration:'none',
-    // a:-webkit-any-link {
-    //   color: -webkit-link;
-    //   cursor: pointer;
-    //   text-decoration: underline;
-    // borderRadius:'0 0 6px 6px',
+    marginTop:'$4'
 })
 
 const OpenProfileLink = styled('a',{
@@ -28,7 +22,7 @@ const OpenProfileLink = styled('a',{
   display:'flex',
   justifyContent:'center',
   alignItems:'center',
-  fontSize: 12,
+  fontSize: '$12',
   backgroundColor:'transparent',
   pointerEvents: 'all'
 })

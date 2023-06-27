@@ -23,7 +23,7 @@ const UpperBox = styled('div',{
 const RepoName = styled('div',{
     color:'$blueNavyBody',
     maxWidth: '145px',
-    fontSize:'15px',
+    fontSize:'$15',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -36,7 +36,7 @@ const LowerBox = styled('div',{
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    fontSize:'12px'
+    fontSize:'$12'
 })
 
 const noDescription = 'No description added'

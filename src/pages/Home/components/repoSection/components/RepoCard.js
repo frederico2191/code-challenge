@@ -6,42 +6,36 @@ const RepoName = styled('div',{
     color:'$blueTextBody',
     fontWeight: 'bold',
     marginTop: '48px',
-    marginBottom:'20px',
+    marginBottom:'$3',
     textAlign: 'center',
-    padding: '0 $1'
+    padding: '0 5px',
+    maxWidth: '232px'
 })
 
 const RepoDescription = styled('div',{
-    marginTop:'$3',
+    marginTop:'$4',
     color: '$blueTextBody',
-    height: '60px',
+    height: '65px',
     maxWidth: '145px',
-    fontSize:'13px',
-    // display:'inline-block',
-    // display: "-webkit-box",
-    // -webkit-line-clamp: 4;
-    // -webkit-box-orient: vertical;
-    // whiteSpace: 'nowrap',
+    fontSize:'$13',
     overflow: 'hidden',
     textOverflow: 'ellipsis'
 })
 
 const Box = styled('div', {
     $$shadow: '$colors$greyLineBody',
-    width:"232px",
+    minWidth:"232px",
     height:"232px",
     borderRadius:'6px',
     boxShadow: "2px 5px 3px 0px $$shadow",
     border:'solid',
-    // borderColor: {variants[index]},
     borderColor: 1,
     borderWidth: '6px 0 0 0',
     display:'flex',
     flexDirection:'column',
     justifyContent: 'flex-start',
     alignItems:'center',
-    // webkitBoxShadow: "5px 9px 10px 0px $blueNavyNavbar",
-    // mozBoxShadow: "5px 9px 10px 0px $blueNavyNavbar"
+    backgroundColor: '$whiteCard'
   })
 
 const noDescription = 'No description added'
