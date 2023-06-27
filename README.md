@@ -56,7 +56,7 @@ The REST API has a custom rate limit according to the different categories/endpo
 
 [https://docs.github.com/en/rest/search?apiVersion=2022-11-28#rate-limit](https://docs.github.com/en/rest/search?apiVersion=2022-11-28#rate-limit)
 
-StrictMode renders components twice on development mode but not production, resulting in double or more the calls consumed on rendering.
+StrictMode renders components twice on development mode but not production, resulting in double or more the calls consumed on rendering. Depending on your purposes, you might find suitable to comment out the `<StrictMode/>` in file `index.js` at the root of the project.
 
 [https://legacy.reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects](https://legacy.reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects)
 
