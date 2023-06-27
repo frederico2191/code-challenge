@@ -7,8 +7,8 @@ Categories are organised by most popular - users created in the last month and h
 
 Furthermore, the user's of this application are able to search Github users and repositories for a specific term.
 
-
-
+## Demo
+![React App - 27 June 2023](https://github.com/frederico2191/code-challenge/assets/121037395/2edaa537-eb0b-46a1-9997-a9a513276fda)
 
 
 ## Getting Started
