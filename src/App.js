@@ -1,9 +1,11 @@
-
 import './App.css';
-import Home from './Home';
+import { BrowserRouter } from "react-router-dom";
+import { RouterConfig } from "./navigation/routerConfig"
 
-function App() {
-  return <Home/>
-}
+const App = () => (
+  <BrowserRouter>
+    <RouterConfig />
+  </BrowserRouter>
+)
 
 export default App;
